@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full' },
+  {path: '', component: AppComponent },
+  {path: '**', redirectTo: 'home' },
+  {path: 'home', component: AppComponent },
   {path:'/product-list', component: ProductListComponent},
   {path:'/order-list', component: OrderListComponent},
 ];
