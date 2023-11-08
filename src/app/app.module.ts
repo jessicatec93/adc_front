@@ -3,14 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { OrderComponent } from './order/order.component';
+
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    OrderComponent
+    ProductListComponent,
+    OrderListComponent,
+    OrderListComponent,
+    ProductListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
