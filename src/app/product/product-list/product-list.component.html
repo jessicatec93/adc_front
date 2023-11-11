@@ -11,7 +11,13 @@
             <th>Cantidad almacenada</th>
             <th>Activo</th>
         </tr>
-        <tr>
+        <tr *ngFor="let product of this.pagination?.data">
+            <td>{{product.created_at}}</td>
+            <td>{{product.folio}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.expiration_at}}</td>
+            <td>{{product.storage}}</td>
+            <td>{{product.active}}</td>
         </tr>
     </table>
 </div>

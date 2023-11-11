@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
-import { Observable} from 'rxjs';
-import { Product } from './schemas/product';
+import { Observable, map} from 'rxjs';
+import { Pagination } from './schemas/Pagination';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProductonOrders(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+  getProductonOrders(): Observable<Pagination> {
+    return this.http.get<Pagination>(this.url);
   }
 }
