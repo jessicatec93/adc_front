@@ -1,23 +1,29 @@
 <br><br>
-<h1>Órdenes de producción</h1>
+<h1>{{title}}</h1>
 <br><br>
 <div>
-    <table width="90%" style="margin-left: 10px">
-        <tr>
-            <th>Fecha de creación</th>
-            <th>Folio</th>
-            <th>Nombre</th>
-            <th>Fecha de expiración</th>
-            <th>Cantidad almacenada</th>
-            <th>Activo</th>
-        </tr>
-        <tr *ngFor="let product of this.pagination?.data">
-            <td>{{product.created_at}}</td>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Folio</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha de expiración</th>
+            <th scope="col">Cantidad almacenada</th>
+            <th scope="col">Activo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of this.pagination?.data">
+            <td scope="row">{{product.created_at}}</td>
             <td>{{product.folio}}</td>
             <td>{{product.name}}</td>
             <td>{{product.expiration_at}}</td>
             <td>{{product.storage}}</td>
             <td>{{product.active}}</td>
-        </tr>
-    </table>
+          </tr>
+        </tbody>
+      </table>
 </div>
+
+
