@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductService } from './product.service';
-import { Observable } from 'rxjs';
 import { Product } from './schemas/product';
 import { Pagination } from './schemas/Pagination';
 
