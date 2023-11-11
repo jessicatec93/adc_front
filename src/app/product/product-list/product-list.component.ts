@@ -13,9 +13,7 @@ import { Pagination } from './schemas/Pagination';
 export class ProductListComponent {
   pagination?: Pagination;
   products: Product[] = [];
-  title = 'Órdenes de producción';
-  cols = ['Fecha de creación', 'Folio', 'Nombre', 'Fecha de expiración', 'Cantidad almacenada', 'Activo'];
-
+  title = 'Productos';
 
   constructor(private productService:ProductService){
   }
