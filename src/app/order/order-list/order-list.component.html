@@ -33,6 +33,9 @@
           </tr>
         </thead>
         <tbody>
+          <tr *ngIf="pagination && pagination.data && pagination.data.length < 1">
+            <td colspan="7">No hay ordenes de producto disponibles.</td>
+          </tr>
           <tr *ngFor="let order of this.pagination?.data">
             <td scope="row">{{order.created_at | date:'dd/MM/yyyy'}}</td>
             <td>{{order.folio}}</td>
