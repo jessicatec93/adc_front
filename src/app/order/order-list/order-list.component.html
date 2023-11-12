@@ -39,7 +39,7 @@
           <tr *ngFor="let order of this.pagination?.data">
             <td scope="row">{{order.created_at | date:'dd/MM/yyyy'}}</td>
             <td>{{order.folio}}</td>
-            <td>{{order.active}}</td>
+            <td>{{valBool(order?.active)}}</td>
             <td>
               <span [ngClass]="{'alert': past_date(order.deadline_at, order.delivery_at)}">
                 {{order.deadline_at | date:'dd/MM/yyyy'}}

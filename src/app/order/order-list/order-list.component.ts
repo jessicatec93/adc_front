@@ -86,4 +86,11 @@ export class OrderListComponent {
       this.getList(pagination_filter);
     }
   }
+
+  valBool(valBool: boolean = false):string {
+    if( valBool ) {
+      return 'Si';
+    }
+    return 'No';
+  }
 }
