@@ -13,10 +13,10 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProductonOrders(text_search = ''): Observable<Pagination> {
+  getProductonOrders(params = ''): Observable<Pagination> {
     let url = this.url
-    if (text_search){
-      url = this.url + '?name=' + text_search;
+    if (params){
+      url = this.url + params;
     }
     return this.http.get<Pagination>(url);
   }
