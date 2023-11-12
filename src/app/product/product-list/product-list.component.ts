@@ -31,7 +31,7 @@ export class ProductListComponent {
   }
 
   getList(text_search = ''):void {
-    this.productService.getProductonOrders(text_search).subscribe({
+    this.productService.getProducts(text_search).subscribe({
       next: (response) => {
         this.pagination = response;
         if(response.meta.last_page && response.meta.last_page > 0){
@@ -47,23 +47,6 @@ export class ProductListComponent {
       text_search = '?name=' + text_search;
     }
     this.getList(text_search);
-  }
-
-  nextPage():void {
-    console.log('entree');
-    if(this.page < this.total_pages) {
-      this.page += 1;
-      const pagination_filter = '?page=' + this.page;
-      this.getList(pagination_filter);
-    }
-  }
-
-  previusPage():void {
-    if( this.page > 1) {
-      this.page -= 1;
-      const pagination_filter = '?page=' + this.page;
-      this.getList(pagination_filter);
-    }
   }
 
   past_date(date_string = "") {
@@ -85,8 +68,24 @@ export class ProductListComponent {
     }
   }
 
-  
   quantity_valid(storage = 0, min_amount=0) {
     return storage < min_amount;
+  }
+
+  nextPage():void {
+    console.log('entree');
+    if(this.page < this.total_pages) {
+      this.page += 1;
+      const pagination_filter = '?page=' + this.page;
+      this.getList(pagination_filter);
+    }
+  }
+
+  previusPage():void {
+    if( this.page > 1) {
+      this.page -= 1;
+      const pagination_filter = '?page=' + this.page;
+      this.getList(pagination_filter);
+    }
   }
 }

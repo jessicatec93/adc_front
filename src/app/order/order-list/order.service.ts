@@ -7,13 +7,13 @@ import { Pagination } from './schemas/Pagination';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
-  private url:string = 'http://127.0.0.1:8000/api/products';
+export class OrderService {
+  private url:string = 'http://127.0.0.1:8000/api/orders';
   
   constructor(private http: HttpClient) {
   }
 
-  getProducts(params = ''): Observable<Pagination> {
+  getOrders(params = ''): Observable<Pagination> {
     let url = this.url
     if (params){
       url = this.url + params;

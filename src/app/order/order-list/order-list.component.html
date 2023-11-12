@@ -1,1 +1,72 @@
-<p>order-list works!</p>
+<br><br>
+<h1><b>{{title}}</b></h1>
+<br><br>
+<div class="container-fluid w-25">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" #searchInput>
+      <button class="btn btn-outline-success" type="button" (click)="onSearch(searchInput.value)">Search</button>
+    </form>
+</div>
+<br>
+<div>
+    <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th scope="col">
+              Fecha de creación
+              <i class="{{order['created_at']}}" (click)="sort('created_at')"></i>
+            </th>
+            <th scope="col">
+              Folio
+              <i class="{{order['folio']}}" (click)="sort('folio')"></i>
+            </th>
+            <th scope="col">
+              Activo
+            </th>
+            <th scope="col">
+              Fecha limite
+              <i class="{{order['deadline_at']}}" (click)="sort('deadline_at')"></i>
+            </th>
+            <th scope="col">Precio total</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of this.pagination?.data">
+            <td scope="row">{{order.created_at | date:'dd/MM/yyyy'}}</td>
+            <td>{{order.folio}}</td>
+            <td>{{order.active}}</td>
+            <td>
+              <span [ngClass]="{'alert': past_date(order.deadline_at, order.delivery_at)}">
+                {{order.deadline_at | date:'dd/MM/yyyy'}}
+              </span>
+            </td>
+            <td>{{order.total_price}}</td>
+            <td>{{order.status_id}}</td>
+            <td>
+              <div class="dropdown">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Ver</a></li>
+                  <li><a class="dropdown-item" href="#">Actualizar</a></li>
+                  <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item"  [class.disabled]="page <= 1">
+            <a class="page-link" (click)="previusPage()">Anterior</a>
+          </li>
+          <li class="page-item" [class.disabled]="page >= total_pages">
+            <a class="page-link" (click)="nextPage()">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
+</div>
