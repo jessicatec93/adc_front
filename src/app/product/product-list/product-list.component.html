@@ -1,11 +1,11 @@
 <br><br>
-<h1>{{title}}</h1>
+<h1><b>{{title}}</b></h1>
 <br><br>
 <div class="container-fluid w-25">
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" #searchInput>
+      <button class="btn btn-outline-success" type="button" (click)="onSearch(searchInput.value)">Search</button>
+    </form>
 </div>
 <br>
 <div>
@@ -44,6 +44,19 @@
           </tr>
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link">Anterior</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
 </div>
 
 

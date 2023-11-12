@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductService } from './product.service';
 import { Product } from './schemas/product';
 import { Pagination } from './schemas/Pagination';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -26,4 +27,14 @@ export class ProductListComponent {
     });
   }
 
+  onSearch(text_search = ''):void{
+    if(text_search) {
+      this.productService.getProductonOrders(text_search).subscribe({
+        next: (response) => {
+          this.pagination = response;
+        },
+        error: (e) => console.error(e)
+      });
+    }
+  }
 }

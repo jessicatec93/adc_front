@@ -13,7 +13,11 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProductonOrders(): Observable<Pagination> {
-    return this.http.get<Pagination>(this.url);
+  getProductonOrders(text_search = ''): Observable<Pagination> {
+    let url = this.url
+    if (text_search){
+      url = this.url + '?name=' + text_search;
+    }
+    return this.http.get<Pagination>(url);
   }
 }
