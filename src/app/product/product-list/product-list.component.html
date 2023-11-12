@@ -9,13 +9,25 @@
 </div>
 <br>
 <div>
-    <table class="table table-hover">
+    <table class="table table-hover text-center">
         <thead>
           <tr>
-            <th scope="col">Fecha de creación</th>
-            <th scope="col">Folio</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Fecha de expiración</th>
+            <th scope="col">
+              Fecha de creación
+              <i class="{{order['created_at']}}" (click)="sort('created_at')"></i>
+            </th>
+            <th scope="col">
+              Folio
+              <i class="{{order['folio']}}" (click)="sort('folio')"></i>
+            </th>
+            <th scope="col">
+              Nombre
+              <i class="{{order['name']}}" (click)="sort('name')"></i>
+            </th>
+            <th scope="col">
+              Fecha de expiración
+              <i class="{{order['expiration_at']}}" (click)="sort('expiration_at')"></i>
+            </th>
             <th scope="col">Cantidad almacenada</th>
             <th scope="col">Activo</th>
             <th scope="col">Acciones</th>
@@ -26,8 +38,14 @@
             <td scope="row">{{product.created_at | date:'dd/MM/yyyy'}}</td>
             <td>{{product.folio}}</td>
             <td>{{product.name}}</td>
-            <td>{{product.expiration_at | date:'dd/MM/yyyy'}}</td>
-            <td>{{product.storage}}</td>
+            <td>
+              <span [ngClass]="{'alert': past_date(product.expiration_at)}">
+                {{product.expiration_at | date:'dd/MM/yyyy'}}
+              </span>
+            </td>
+            <td>
+                {{product.storage}}
+            </td>
             <td>{{product.active}}</td>
             <td>
               <div class="dropdown">
@@ -49,8 +67,8 @@
           <li class="page-item"  [class.disabled]="page <= 1">
             <a class="page-link" (click)="previusPage()">Anterior</a>
           </li>
-          <li class="page-item">
-            <a class="page-link" [class.disabled]="page >= total_pages">Siguiente</a>
+          <li class="page-item" [class.disabled]="page >= total_pages">
+            <a class="page-link" (click)="nextPage()">Siguiente</a>
           </li>
         </ul>
       </nav>
