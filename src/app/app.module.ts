@@ -8,6 +8,8 @@ import { OrderListComponent } from './order/order-list/order-list.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { TechnicalSupportComponent } from './technical-support/technical-support.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HomeComponent } from './home/home.component';
     OrderListComponent,
     ProductListComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent,
+    TechnicalSupportComponent
   ],
   imports: [
     BrowserModule,

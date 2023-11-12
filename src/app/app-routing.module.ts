@@ -4,12 +4,16 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { TechnicalSupportComponent } from './technical-support/technical-support.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'product-list', component: ProductListComponent },
   { path: 'order-list', component: OrderListComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'technical-support', component: TechnicalSupportComponent}
 ];
 
 @NgModule({
