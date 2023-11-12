@@ -65,9 +65,9 @@ export class OrderListComponent {
     const deadline_at = new Date(deadline_string);
     if(delivery_string){
       const delivery_at = new Date(delivery_string);
-      return deadline_at > delivery_at;  
+      return deadline_at <= delivery_at;  
     }
-    return deadline_at > this.fechaActual;
+    return deadline_at <= this.fechaActual;
   }
 
   nextPage():void {
