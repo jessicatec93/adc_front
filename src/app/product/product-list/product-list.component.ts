@@ -84,4 +84,9 @@ export class ProductListComponent {
       this.getList(pagination_filter);
     }
   }
+
+  
+  quantity_valid(storage = 0, min_amount=0) {
+    return storage < min_amount;
+  }
 }

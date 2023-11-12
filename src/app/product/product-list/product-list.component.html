@@ -44,7 +44,9 @@
               </span>
             </td>
             <td>
+              <span [ngClass]="{'alert': quantity_valid(product.storage, product.min_amount)}">
                 {{product.storage}}
+              </span>
             </td>
             <td>{{product.active}}</td>
             <td>

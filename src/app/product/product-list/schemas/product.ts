@@ -6,4 +6,5 @@ export class Product {
     storage?: number;
     active?: boolean;
     created_at?: string;
+    min_amount?: number;
   }
