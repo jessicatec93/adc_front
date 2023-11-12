@@ -1,6 +1,13 @@
 <br><br>
 <h1>{{title}}</h1>
 <br><br>
+<div class="container-fluid w-25">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
+<br>
 <div>
     <table class="table table-hover">
         <thead>
@@ -22,10 +29,25 @@
             <td>{{product.expiration_at | date:'dd/MM/yyyy'}}</td>
             <td>{{product.storage}}</td>
             <td>{{product.active}}</td>
-            <td>Acciones</td>
+            <td>
+              <div class="dropdown">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Ver</a></li>
+                  <li><a class="dropdown-item" href="#">Actualizar</a></li>
+                  <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
 </div>
+
+
+
+
 
 
