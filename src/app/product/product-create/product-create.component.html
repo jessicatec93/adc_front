@@ -1,4 +1,36 @@
 <br><br>
-<p>product-create works!</p>
+<h1><b>Crear nuevo producto</b></h1>
+<br><br>
+<form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputName" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="inputName">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPricePerUnit" class="form-label">Precio por unidad</label>
+          <input type="number" class="form-control" id="inputPricePerUnit">
+        </div>
+        <div class="col-6">
+          <label for="inputMinAmount" class="form-label">Monto minimo</label>
+          <input type="text" class="form-control" id="inputMinAmount">
+        </div>
+        <div class="col-md-6">
+            <label for="inputState" class="form-label">Clasificación</label>
+            <select id="inputClassificationId" class="form-select">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputExpirationAt" class="form-label">Fecha de expiración</label>
+          <input type="text" class="form-control" id="inputExpirationAt">
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+        <div class="col-6 float-end">
+            <a class="btn btn-danger" href="/product-list" role="button">Cancelar</a>
+        </div>
+      </form>
 <br><br><br>
-<a class="btn btn-primary" href="/product-list" role="button">Regresar</a>
