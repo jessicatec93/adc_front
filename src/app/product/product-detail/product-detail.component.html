@@ -1,0 +1,48 @@
+<br><br>
+<h1><b>{{product?.name}}</b></h1>
+<br><br>
+<div>
+    <table  cellpadding="10" class="w-50">
+        <tbody>
+            <tr>
+                <td><b>Folio:</b></td>
+                <td>{{product?.folio}}</td>
+                <td><b>Descripción:</b></td>
+                <td>{{product?.description}}</td>
+            </tr>
+            <tr>
+                <td><b>Precio por unidad:</b></td>
+                <td>{{product?.price_per_unit}}</td>
+                <td><b>Fecha de expiración:</b></td>
+                <td>{{product?.expiration_at | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+                <td><b>Cantidad en almacén:</b></td>
+                <td>{{product?.storage}}</td>
+                <td><b>Activo:</b></td>
+                <td>{{valBool(product?.active)}}</td>
+            </tr>
+            <tr>
+                <td><b>Unidad minima en almacén:</b></td>
+                <td>{{product?.min_amount}}</td>
+                <td><b>Clasificación:</b></td>
+                <td>{{product?.classification?.name}}</td>
+            </tr>
+            <tr>
+                <td><b>Creador:</b></td>
+                <td>{{product?.creator?.name}}</td>
+                <td><b>Actualizador:</b></td>
+                <td>{{product?.updater?.name}}</td>
+            </tr>
+            <tr>
+                <td><b>Fecha de creación:</b></td>
+                <td>{{product?.created_at | date:'dd/MM/yyyy'}}</td>
+                <td><b>Fecha de actualización:</b></td>
+                <td>{{product?.updated_at | date:'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br><br><br>
+<a class="btn btn-primary" href="/product-list" role="button">Regresar</a>
+

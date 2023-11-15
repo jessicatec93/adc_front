@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ProductService } from './product.service';
+import { ProductService } from '../product.service';
 import { Product } from './schemas/product';
-import { Pagination } from './schemas/Pagination';
+import { Pagination } from './schemas/pagination';
 
 @Component({
   selector: 'app-product-list',

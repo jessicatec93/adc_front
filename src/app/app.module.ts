@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { TechnicalSupportComponent } from './technical-support/technical-support.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TechnicalSupportComponent } from './technical-support/technical-support
     HeaderComponent,
     HomeComponent,
     ContactComponent,
-    TechnicalSupportComponent
+    TechnicalSupportComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
