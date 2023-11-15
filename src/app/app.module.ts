@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { TechnicalSupportComponent } from './technical-support/technical-support.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductCreateComponent } from './product/product-create/product-create.
     ContactComponent,
     TechnicalSupportComponent,
     ProductDetailComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,

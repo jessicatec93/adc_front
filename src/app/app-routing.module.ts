@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { TechnicalSupportComponent } from './technical-support/technical-support.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-create', component: ProductCreateComponent},
   { path: 'product-detail/:id', component: ProductDetailComponent},
+  { path: 'product-update/:id', component: ProductUpdateComponent},
   { path: 'order-list', component: OrderListComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'technical-support', component: TechnicalSupportComponent},
