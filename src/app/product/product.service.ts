@@ -25,11 +25,21 @@ export class ProductService {
   }
 
   getOneProducts(product_id: number): Observable<ProductDetailResponse> {
-    let url = this.url + '/' + product_id;
+    const url = this.url + '/' + product_id;
     return this.http.get<ProductDetailResponse>(url);
   }
 
   createProduct(data: ProductCreate): Observable<ProductCreateResponse> {
     return this.http.post<ProductCreateResponse>(this.url, data);
+  }
+
+  updateProduct(product_id: number, data: ProductCreate): Observable<ProductCreateResponse> {
+    const url = this.url + '/' + product_id;
+    return this.http.post<ProductCreateResponse>(url, data);
+  }
+
+  deleteProduct(product_id: number): Observable<ProductCreateResponse> {
+    const url = this.url + '/' + product_id;
+    return this.http.delete<ProductCreateResponse>(url);
   }
 }
