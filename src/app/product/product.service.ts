@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http'
 import { Observable} from 'rxjs';
 import { Pagination } from './product-list/schemas/pagination';
 import { ProductDetailResponse } from './product-detail/schemas/product-detail-response';
+import { ProductCreate } from './product-create/schemas/product-create';
+import { ProductCreateResponse } from './product-create/schemas/product-create-response';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +27,9 @@ export class ProductService {
   getOneProducts(product_id: number): Observable<ProductDetailResponse> {
     let url = this.url + '/' + product_id;
     return this.http.get<ProductDetailResponse>(url);
+  }
+
+  createProduct(data: ProductCreate): Observable<ProductCreateResponse> {
+    return this.http.post<ProductCreateResponse>(this.url, data);
   }
 }
