@@ -3,31 +3,34 @@
 <br><br>
 <form class="row g-3">
         <div class="col-md-6">
-          <label for="inputName" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="inputName">
+          <label class="form-label">Nombre</label>
+          <input [(ngModel)]="product.name" type="string" placeholder="Nombre del producto" name="name" class="form-control" id="name" required>
         </div>
         <div class="col-md-6">
-          <label for="inputPricePerUnit" class="form-label">Precio por unidad</label>
-          <input type="number" class="form-control" id="inputPricePerUnit">
+          <label class="form-label">Descripción</label>
+          <input [(ngModel)]="product.description" type="string" placeholder="Descripción del producto" name="description" class="form-control" id="description">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Precio por unidad</label>
+          <input [(ngModel)]="product.price_per_unit" type="number" placeholder="Precio por unidad del producto" name="PricePerUnit" class="form-control" id="PricePerUnit" required>
         </div>
         <div class="col-6">
-          <label for="inputMinAmount" class="form-label">Monto minimo</label>
-          <input type="text" class="form-control" id="inputMinAmount">
+          <label class="form-label">Monto minimo</label>
+          <input [(ngModel)]="product.min_amount" type="number" placeholder="Cantidad mínima del producto en almacen" name="MinAmount" class="form-control" id="MinAmount" required>
         </div>
         <div class="col-md-6">
-            <label for="inputState" class="form-label">Clasificación</label>
-            <select id="inputClassificationId" class="form-select">
-              <option selected>Choose...</option>
-              <option>...</option>
+            <label  class="form-label">Clasificación</label>
+            <select [(ngModel)]="product.classification_id" name="ClassificationId" class="form-select" id="ClassificationId">
+              <option [value]="classification?.id" *ngFor="let classification of classifications">{{classification?.name}}</option>
             </select>
         </div>
         <div class="col-md-6">
-          <label for="inputExpirationAt" class="form-label">Fecha de expiración</label>
-          <input type="text" class="form-control" id="inputExpirationAt">
+          <label class="form-label">Fecha de expiración</label>
+          <input [(ngModel)]="product.expiration_at" type="text" name="expirationAt" class="form-control" id="inputExpirationAt" required>
         </div>
         <div class="col-md-12"></div>
         <div class="col-6">
-          <button type="submit" class="btn btn-primary">Crear</button>
+          <button type="submit" class="btn btn-success" (click)="save()">Crear</button>
         </div>
         <div class="col-6 float-end">
             <a class="btn btn-danger" href="/product-list" role="button">Cancelar</a>

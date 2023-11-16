@@ -7,4 +7,4 @@ export class Product {
     active?: boolean;
     created_at?: string;
     min_amount?: number;
-  }
+}
