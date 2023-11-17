@@ -62,7 +62,7 @@ export class ProductCreateComponent {
       this.product.name = data['name'];
       this.product.description = data['description'] ?? null;
       this.product.price_per_unit = data['price_per_unit'];
-      this.product.expiration_at = data['expiration_at'];
+      this.product.expiration_at = data['expiration_at']  + " 06:00:00";;
       this.product.classification_id = data['classification_id'];
       this.product.min_amount = data['min_amount'];
       this.productService.createProduct(this.product).subscribe({
