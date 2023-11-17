@@ -9,6 +9,9 @@ import { TechnicalSupportComponent } from './technical-support/technical-support
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { OrderCreateComponent } from './order/order-create/order-create.component';
+import { OrderDetailComponent } from './order/order-detail/order-detail.component';
+import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +21,9 @@ const routes: Routes = [
   { path: 'product-detail/:id', component: ProductDetailComponent},
   { path: 'product-update/:id', component: ProductUpdateComponent},
   { path: 'order-list', component: OrderListComponent },
+  { path: 'order-create', component: OrderCreateComponent},
+  { path: 'order-detail/:id', component: OrderDetailComponent},
+  { path: 'order-update/:id', component: OrderUpdateComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'technical-support', component: TechnicalSupportComponent},
 ];
