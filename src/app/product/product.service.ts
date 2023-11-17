@@ -35,7 +35,7 @@ export class ProductService {
 
   updateProduct(product_id: number, data: ProductCreate): Observable<ProductCreateResponse> {
     const url = this.url + '/' + product_id;
-    return this.http.post<ProductCreateResponse>(url, data);
+    return this.http.put<ProductCreateResponse>(url, data);
   }
 
   deleteProduct(product_id: number): Observable<ProductCreateResponse> {

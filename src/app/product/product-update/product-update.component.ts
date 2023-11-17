@@ -19,7 +19,6 @@ export class ProductUpdateComponent {
   productDetail?: ProductDetail;
   product_id = 0;
   minDate =  moment(new Date()).format('YYYY-MM-DD');
-  expiration_at =  moment(new Date()).format('YYYY-MM-DD');
   protected registerForm!: FormGroup;
   protected submitted = false;
 
@@ -38,12 +37,12 @@ export class ProductUpdateComponent {
     this.getList('?order=name');
     this.registerForm = this.formBuilder.group(
       {
-        name: new FormControl("nombre", [Validators.required, Validators.minLength(5)]),
-        description: new FormControl(this.productDetail?.description, []),
-        price_per_unit: new FormControl(this.productDetail?.price_per_unit, [Validators.required, Validators.min(1)]),
+        name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+        description: new FormControl("", []),
+        price_per_unit: new FormControl("", [Validators.required, Validators.min(1)]),
         expiration_at: new FormControl("", Validators.required),
         classification_id: new FormControl("", Validators.required),
-        min_amount:  new FormControl(this.productDetail?.min_amount, [Validators.required, Validators.min(1)]),
+        min_amount:  new FormControl("", [Validators.required, Validators.min(1)]),
       },
     );
   }
@@ -81,7 +80,7 @@ export class ProductUpdateComponent {
       this.product.expiration_at = data['expiration_at'];
       this.product.classification_id = data['classification_id'];
       this.product.min_amount = data['min_amount'];
-      this.productService.createProduct(this.product).subscribe({
+      this.productService.updateProduct(this.product_id, this.product).subscribe({
         next: (response) => {
           alert(
             "El producto " + response?.data?.folio + " fue registrado exitosamente!."
