@@ -1,4 +1,113 @@
 <br><br>
-<p>product-update works!</p>
+<h1><b>Actualizar el producto {{productDetail?.name}}</b></h1>
+<br><br>
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  class="row g-3"
+>
+  <div class="col-md-6">
+    <label for="Name" class="form-label">Nombre*</label>
+    <input type="text" class="form-control" formControlName="name" value="{{productDetail?.name}}"/>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['name'].touched || submitted) &&
+          registerFormControl['name'].errors?.['required']"
+    >
+      Nombre es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['name'].touched || submitted) &&
+          registerFormControl['name'].errors?.['minLength']"
+    >
+      Nombre debe ser mayor a 5 caracteres
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Description" class="form-label">Descripción</label>
+    <input type="text" class="form-control" formControlName="description" value="{{productDetail?.description}}"/>
+  </div>
+  <div class="col-md-6">
+    <label for="Price_per_unit" class="form-label">Precio por unidad*</label>
+    <input type="number" class="form-control" formControlName="price_per_unit"  value="{{productDetail?.price_per_unit}}"/>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['price_per_unit'].touched || submitted) &&
+          registerFormControl['price_per_unit'].errors?.['required']"
+    >
+      Precio por unidad es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['price_per_unit'].touched || submitted) &&
+          registerFormControl['price_per_unit'].errors?.['min']"
+    >
+      Precio por unidad debe ser mayor a 0
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Min_amount" class="form-label">Monto minimo*</label>
+    <input type="number" class="form-control" formControlName="min_amount"  value="{{productDetail?.min_amount}}"/>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['required']"
+    >
+      Monto minimo es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['min']"
+    >
+      Monto minimo debe ser mayor a 0
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Classification_id" class="form-label">Clasificación*</label>
+    <select name="ClassificationId" class="form-select" formControlName="classification_id">
+      <option [value]="classification?.id" *ngFor="let classification of classifications">{{classification?.name}}</option>
+    </select>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['classification_id'].touched || submitted) &&
+          registerFormControl['classification_id'].errors?.['required']"
+    >
+      Classificación es requerido
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Expiration_at" class="form-label">Fecha de expiración*</label>
+    <input type="date" min="{{minDate}}" class="form-control" formControlName="expiration_at"/>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['expiration_at'].touched || submitted) &&
+          registerFormControl['expiration_at'].errors?.['required']"
+    >
+    Fecha de expiración es requerido
+    </span>
+  </div>
+  <div align="right">
+    <button type="submit" class="btn btn-success">Registrar</button>
+    <button
+      type="reset"
+      class="btn btn-secondary ms-2"
+      (click)="resetForm()"
+    >
+      Limpiar
+    </button>
+    &nbsp;
+    <a class="btn btn-danger" href="/product-list" role="button">Cancelar</a>
+  </div>
+</form>
 <br><br><br>
-<a class="btn btn-primary" href="/product-list" role="button">Regresar</a>
