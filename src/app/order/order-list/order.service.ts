@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 
 import { Observable, map} from 'rxjs';
 import { Pagination } from './schemas/Pagination';
+import { OrderCreateResponse } from './schemas/order-create-response';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +20,10 @@ export class OrderService {
       url = this.url + params;
     }
     return this.http.get<Pagination>(url);
+  }
+
+  deleteOrder(order_id: number): Observable<OrderCreateResponse> {
+    const url = this.url + '/' + order_id;
+    return this.http.delete<OrderCreateResponse>(url);
   }
 }

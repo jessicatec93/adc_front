@@ -92,4 +92,18 @@ export class OrderListComponent {
     }
     return 'No';
   }
+
+  delete(id: number = 0, folio: string = '') {
+    if(window.confirm('Estas seguro de eliminar la orden ' + folio + '?')){
+      this.orderService.deleteOrder(id).subscribe({
+        next: (response) => {
+          if(response?.data?.folio){
+            this.ngOnInit();
+          }
+        },
+        error: (e) => console.error(e)
+      });
+
+     }
+  }
 }
