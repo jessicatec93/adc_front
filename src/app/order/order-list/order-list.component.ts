@@ -103,7 +103,6 @@ export class OrderListComponent {
         },
         error: (e) => console.error(e)
       });
-
      }
   }
 }

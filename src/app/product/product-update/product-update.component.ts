@@ -35,16 +35,7 @@ export class ProductUpdateComponent {
     this.product_id = this.route.snapshot.params['id'];
     this.getOneProducto();
     this.getList('?order=name');
-    this.registerForm = this.formBuilder.group(
-      {
-        name: new FormControl("", [Validators.required, Validators.minLength(5)]),
-        description: new FormControl("", []),
-        price_per_unit: new FormControl("", [Validators.required, Validators.min(1)]),
-        expiration_at: new FormControl("", Validators.required),
-        classification_id: new FormControl("", Validators.required),
-        min_amount:  new FormControl("", [Validators.required, Validators.min(1)]),
-      },
-    );
+    this.setForm();
   }
 
   getList(text_search = ''):void {
@@ -56,10 +47,28 @@ export class ProductUpdateComponent {
     });
   }
 
+  setForm():void {
+    let expiration_at = "";
+    if(this.productDetail?.expiration_at){
+      expiration_at = moment(new Date(this.productDetail?.expiration_at)).format('YYYY-MM-DD')
+    }
+    this.registerForm = this.formBuilder.group(
+      {
+        name: new FormControl(this.productDetail?.name, [Validators.required, Validators.minLength(5)]),
+        description: new FormControl(this.productDetail?.description ?? "", []),
+        price_per_unit: new FormControl(this.productDetail?.price_per_unit ?? 0, [Validators.required, Validators.min(1)]),
+        expiration_at: new FormControl(expiration_at, Validators.required),
+        classification_id: new FormControl(this.productDetail?.classification?.id ?? "", Validators.required),
+        min_amount:  new FormControl(this.productDetail?.min_amount ?? 0, [Validators.required, Validators.min(1)]),
+      },
+    );
+  }
+
   getOneProducto() {
     this.productService.getOneProducts(this.product_id).subscribe({
       next: (response) => {
         this.productDetail = response.data;
+        this.setForm();
       },
       error: (e) => console.error(e)
     });
