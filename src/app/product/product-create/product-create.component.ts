@@ -5,6 +5,7 @@ import { ProductCreate } from './schemas/product-create';
 import * as moment from 'moment';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,16 +17,29 @@ export class ProductCreateComponent {
   classifications?: Classification[];
   product = new ProductCreate();
   minDate =  moment(new Date()).format('YYYY-MM-DD');
+  protected registerForm!: FormGroup;
+  protected submitted = false;
 
   constructor(
     private classificationService: ClassificationService,
     private productService:ProductService,
-    private router: Router
+    private router: Router,
+    private readonly formBuilder: NonNullableFormBuilder,
   ){
   }
 
   ngOnInit():void {
     this.getList('?order=name');
+    this.registerForm = this.formBuilder.group(
+      {
+        name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+        description: new FormControl("", []),
+        price_per_unit: new FormControl(0, [Validators.required, Validators.min(1)]),
+        expiration_at: new FormControl("", Validators.required),
+        classification_id: new FormControl("", Validators.required),
+        min_amount:  new FormControl(0, [Validators.required, Validators.min(1)]),
+      },
+    );
   }
 
   getList(text_search = ''):void {
@@ -37,15 +51,36 @@ export class ProductCreateComponent {
     });
   }
 
-  save(){
-    console.log('enviado exitosamente');
-    console.log(this.product);
-    this.productService.createProduct(this.product).subscribe({
-      next: (response) => {
-        console.log(response?.data?.id);
-        this.router.navigate(['/product-list']);
-      },
-      error: (e) => console.error(e)
-    });
+  protected get registerFormControl() {
+    return this.registerForm.controls;
+  }
+
+  protected onSubmit(): void {
+    this.submitted = true;
+
+    if (this.registerForm.valid) {
+      const data = this.registerForm.value;
+      this.product.name = data['name'];
+      this.product.description = data['description'] ?? null;
+      this.product.price_per_unit = data['price_per_unit'];
+      this.product.expiration_at = data['expiration_at'];
+      this.product.classification_id = data['classification_id'];
+      this.product.min_amount = data['min_amount'];
+      this.productService.createProduct(this.product).subscribe({
+        next: (response) => {
+          alert(
+            "El producto " + response?.data?.folio + " fue registrado exitosamente!."
+          );
+          this.router.navigate(['/product-list']);
+        },
+        error: (e) => console.error(e)
+      });
+    }
+  }
+
+  protected resetForm(): void {
+    this.registerForm.reset();
   }
 }
+
+

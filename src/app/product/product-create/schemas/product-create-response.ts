@@ -1,5 +1,5 @@
 export class ProductCreateResponse {
     data?: {
-      id?: number
+      folio?: string
     };
 }
