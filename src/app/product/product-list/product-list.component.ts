@@ -73,7 +73,6 @@ export class ProductListComponent {
   }
 
   nextPage():void {
-    console.log('entree');
     if(this.page < this.total_pages) {
       this.page += 1;
       const pagination_filter = '?page=' + this.page;
@@ -94,5 +93,19 @@ export class ProductListComponent {
       return 'Si';
     }
     return 'No';
+  }
+
+  delete(id: number = 0, folio: string = '') {
+    if(window.confirm('Estas seguro de eliminar el producto ' + folio + '?')){
+      this.productService.deleteProduct(id).subscribe({
+        next: (response) => {
+          if(response?.data?.folio){
+            this.ngOnInit();
+          }
+        },
+        error: (e) => console.error(e)
+      });
+
+     }
   }
 }

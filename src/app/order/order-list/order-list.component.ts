@@ -71,7 +71,6 @@ export class OrderListComponent {
   }
 
   nextPage():void {
-    console.log('entree');
     if(this.page < this.total_pages) {
       this.page += 1;
       const pagination_filter = '?page=' + this.page;
