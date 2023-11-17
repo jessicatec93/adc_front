@@ -1,1 +1,60 @@
-<p>order-detail works!</p>
+<br><br>
+<table class="w-100">
+    <tbody>
+      <tr>
+      <td><h1><b>Orden #{{order?.folio}}</b></h1></td>
+      <td class="float-end"><a class="btn btn-primary" href="/order-update/{{order_id}}" role="button">Actualizar order</a></td>
+      </tr>
+    </tbody>
+  </table>
+<br><br>
+<div>
+    <table  cellpadding="10" class="w-50">
+        <tbody>
+            <tr>
+                <td><b>Producto solicitado:</b></td>
+                <td>{{order?.product?.name}}</td>
+                <td><b>Descripción:</b></td>
+                <td>{{order?.description}}</td>
+            </tr>
+            <tr>
+                <td><b>Cantidad requerida:</b></td>
+                <td>{{order?.required_quantity}}</td>
+                <td><b>Clasificación:</b></td>
+                <td>{{order?.product?.classification?.name}}</td>
+            </tr>
+            <tr>
+                <td><b>Precio por unidad:</b></td>
+                <td>{{order?.price_per_unit}}</td>
+                <td><b>Fecha de expiración:</b></td>
+                <td>{{order?.delivery_at | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+                <td><b>Estatus:</b></td>
+                <td>{{order?.status?.name}}</td>
+                <td><b>Activo:</b></td>
+                <td>{{valBool(order?.active)}}</td>
+            </tr>
+            <tr>
+                <td><b>Precio total:</b></td>
+                <td>{{order?.total_price}}</td>
+                <td><b>Fecha limite:</b></td>
+                <td>{{order?.deadline_at | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+                <td><b>Creador:</b></td>
+                <td>{{order?.creator?.name}}</td>
+                <td><b>Actualizador:</b></td>
+                <td>{{order?.updater?.name}}</td>
+            </tr>
+            <tr>
+                <td><b>Fecha de creación:</b></td>
+                <td>{{order?.created_at | date:'dd/MM/yyyy'}}</td>
+                <td><b>Fecha de actualización:</b></td>
+                <td>{{order?.updated_at | date:'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br><br><br>
+<a class="btn btn-primary" href="/order-list" role="button">Regresar</a>

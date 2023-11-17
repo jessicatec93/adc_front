@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
 import { Observable, map} from 'rxjs';
-import { Pagination } from './schemas/Pagination';
-import { OrderCreateResponse } from './schemas/order-create-response';
+import { Pagination } from './order-list/schemas/Pagination';
+import { OrderCreateResponse } from './order-list/schemas/order-create-response';
+import { OrderDetailResponse } from './order-detail/schemas/order-detail-response';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,11 @@ export class OrderService {
       url = this.url + params;
     }
     return this.http.get<Pagination>(url);
+  }
+  
+  getOneOrder(order_id: number): Observable<OrderDetailResponse> {
+    const url = this.url + '/' + order_id;
+    return this.http.get<OrderDetailResponse>(url);
   }
 
   deleteOrder(order_id: number): Observable<OrderCreateResponse> {
