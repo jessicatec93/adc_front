@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/product/services/product.service';
 import { Router } from '@angular/router';
 import { OrderStatus } from '../schemas/order_status';
 import { OrderService } from '../services/order.service';
+import { ProductResum } from 'src/app/product/services/productResum';
 
 @Component({
   selector: 'app-order-create',
@@ -16,6 +17,7 @@ import { OrderService } from '../services/order.service';
 export class OrderCreateComponent {
   order = new OrderCreate();
   statuses?: OrderStatus[];
+  products?: ProductResum[];
   minDate =  moment(new Date()).format('YYYY-MM-DD');
   protected submitted = false;
 
@@ -40,32 +42,13 @@ export class OrderCreateComponent {
     });
   }
 
-  //protected onSubmit(): void {
-  //  this.submitted = true;
-//
-  //  if (this.orderForm.valid) {
-  //    const data = this.orderForm.value;
-  //    this.order.delivery_at = data['delivery_at']? data['delivery_at']  + " 06:00:00": '';
-  //    this.order.deadline_at = data['deadline_at']  + " 06:00:00";
-  //    this.order.description = data['description'] ?? '';
-  //    this.order.price_per_unit = data['price_per_unit'];
-  //    this.order.total_price = data['total_price'];
-  //    this.order.required_quantity = data['required_quantity'];
-  //    this.order.status_id = data['status_id'];
-  //    this.order.product_id = data['product_id'];
-  //    this.orderService.createOrder(this.order).subscribe({
-  //      next: (response) => {
-  //        alert(
-  //          "La orden " + response?.data?.folio + " fue registrado exitosamente!."
-  //        );
-  //        this.router.navigate(['/order-list']);
-  //      },
-  //      error: (e) => console.error(e)
-  //    });
-  //  }
-  //}
+  getProductListResum(text_search = ''):void {
+    this.productService.getProductsResum(text_search).subscribe({
+      next: (response) => {
+        this.products = response.data;
+      },
+      error: (e) => console.error(e)
+    });
+  }
 
-  //protected resetForm(): void {
-  //  this.orderForm.reset();
-  //}
 }
