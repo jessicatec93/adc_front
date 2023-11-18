@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
 import { Observable} from 'rxjs';
-import { Pagination } from './product-list/schemas/pagination';
-import { ProductDetailResponse } from './product-detail/schemas/product-detail-response';
-import { ProductCreate } from './product-create/schemas/product-create';
-import { ProductCreateResponse } from './product-create/schemas/product-create-response';
+import { Pagination } from '../product-list/schemas/pagination';
+import { ProductDetailResponse } from '../product-detail/schemas/product-detail-response';
+import { ProductCreate } from '../product-create/schemas/product-create';
+import { ProductCreateResponse } from '../product-create/schemas/product-create-response';
 
 @Injectable({
   providedIn: 'root',

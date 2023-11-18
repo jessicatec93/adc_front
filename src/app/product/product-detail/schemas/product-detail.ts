@@ -1,4 +1,4 @@
-import { Classification } from "src/app/schemas/classification";
+import { Classification } from "src/app/product/schemas/classification";
 import { User } from "src/app/schemas/user";
 
 export class ProductDetail {

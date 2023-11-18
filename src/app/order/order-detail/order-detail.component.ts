@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderDetail } from './schemas/order-detail';
 import { ActivatedRoute } from '@angular/router';
-import { OrderService } from '../order.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-order-detail',

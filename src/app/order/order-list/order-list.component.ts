@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OrderService } from '../order.service';
+import { OrderService } from '../services/order.service';
 import { Pagination } from './schemas/Pagination';
 import { Order } from './schemas/order';
 

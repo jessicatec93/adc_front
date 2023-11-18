@@ -1,4 +1,4 @@
-import { OrderStatus } from "../../schemas copy/order_status";
+import { OrderStatus } from "../../schemas/order_status";
 
 export class Order {
     id?: number;

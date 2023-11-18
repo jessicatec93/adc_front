@@ -1,9 +1,9 @@
 import * as moment from 'moment';
-import { Classification } from 'src/app/schemas/classification';
-import { ClassificationService } from 'src/app/services/classification.service';
+import { Classification } from 'src/app/product/schemas/classification';
+import { ClassificationService } from 'src/app/product/services/classification.service';
 import { Component } from '@angular/core';
 import { ProductCreate } from './schemas/product-create';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 

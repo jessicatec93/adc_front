@@ -1,6 +1,6 @@
 import { ProductDetail } from "src/app/product/product-detail/schemas/product-detail";
 import { User } from "src/app/schemas/user";
-import { OrderStatus } from "../../schemas copy/order_status";
+import { OrderStatus } from "../../schemas/order_status";
 
 export class OrderDetail {
   id?: number;
