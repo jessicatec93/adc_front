@@ -17,8 +17,8 @@
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['expiration_at'].touched || submitted) &&
-          registerFormControl['expiration_at'].errors?.['required']"
+          (registerFormControl['description'].touched || submitted) &&
+          registerFormControl['description'].errors?.['required']"
     >
     Fecha de atención es requerido
     </span>
@@ -49,16 +49,16 @@
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['min_amount'].touched || submitted) &&
-          registerFormControl['min_amount'].errors?.['required']"
+          (registerFormControl['required_quantity'].touched || submitted) &&
+          registerFormControl['required_quantity'].errors?.['required']"
     >
       Cantidad requerida es requerido
     </span>
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['min_amount'].touched || submitted) &&
-          registerFormControl['min_amount'].errors?.['min']"
+          (registerFormControl['required_quantity'].touched || submitted) &&
+          registerFormControl['required_quantity'].errors?.['min']"
     >
       Cantidad requerida debe ser mayor a 0
     </span>
@@ -69,16 +69,16 @@
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['min_amount'].touched || submitted) &&
-          registerFormControl['min_amount'].errors?.['required']"
+          (registerFormControl['total_price'].touched || submitted) &&
+          registerFormControl['total_price'].errors?.['required']"
     >
       Total de precio es requerido
     </span>
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['min_amount'].touched || submitted) &&
-          registerFormControl['min_amount'].errors?.['min']"
+          (registerFormControl['total_price'].touched || submitted) &&
+          registerFormControl['total_price'].errors?.['min']"
     >
       Total de precio debe ser mayor a 0
     </span>
@@ -91,8 +91,8 @@
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['classification_id'].touched || submitted) &&
-          registerFormControl['classification_id'].errors?.['required']"
+          (registerFormControl['status_id'].touched || submitted) &&
+          registerFormControl['status_id'].errors?.['required']"
     >
       Estatus es requerido
     </span>
@@ -100,13 +100,13 @@
   <div class="col-md-6">
     <label for="product_id" class="form-label">Producto*</label>
     <select name="ProductId" class="form-select" formControlName="product_id">
-      <option [value]="status?.id" *ngFor="let status of statuses">{{status?.name}}</option>
+      <option [value]="product?.id" *ngFor="let product of products">{{product?.folio}}</option>
     </select>
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['classification_id'].touched || submitted) &&
-          registerFormControl['classification_id'].errors?.['required']"
+          (registerFormControl['product_id'].touched || submitted) &&
+          registerFormControl['product_id'].errors?.['required']"
     >
       Producto es requerido
     </span>
@@ -117,8 +117,8 @@
     <span
       class="text-danger"
       *ngIf="
-          (registerFormControl['expiration_at'].touched || submitted) &&
-          registerFormControl['expiration_at'].errors?.['required']"
+          (registerFormControl['deadline_at'].touched || submitted) &&
+          registerFormControl['deadline_at'].errors?.['required']"
     >
     Fecha de inicio de limite es requerido
     </span>
