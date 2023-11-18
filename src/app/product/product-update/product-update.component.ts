@@ -92,7 +92,7 @@ export class ProductUpdateComponent {
       this.productService.updateProduct(this.product_id, this.product).subscribe({
         next: (response) => {
           alert(
-            "El producto " + response?.data?.folio + " fue registrado exitosamente!."
+            "El producto " + response?.data?.folio + " fue actualizado exitosamente!."
           );
           this.router.navigate(['/product-list']);
         },
