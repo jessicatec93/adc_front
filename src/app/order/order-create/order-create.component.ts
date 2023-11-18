@@ -19,6 +19,7 @@ export class OrderCreateComponent {
   statuses?: OrderStatus[];
   products?: ProductResum[];
   minDate =  moment(new Date()).format('YYYY-MM-DD');
+  protected orderForm!: FormGroup;
   protected submitted = false;
 
   constructor(
@@ -26,11 +27,23 @@ export class OrderCreateComponent {
     private orderService: OrderService,
     private productService:ProductService,
     private router: Router,
+    private readonly formBuilder: FormBuilder,
   ){
   }
 
   ngOnInit():void {
     this.getOrderStatusList('?order=name');
+    this.getProductListResum('?order=folio');
+    this.orderForm = this.formBuilder.group(
+      {
+        name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+        description: new FormControl("", []),
+        price_per_unit: new FormControl(0, [Validators.required, Validators.min(1)]),
+        expiration_at: new FormControl("", Validators.required),
+        classification_id: new FormControl("", Validators.required),
+        min_amount:  new FormControl(0, [Validators.required, Validators.min(1)]),
+      },
+    );
   }
 
   getOrderStatusList(text_search = ''):void {
@@ -49,6 +62,10 @@ export class OrderCreateComponent {
       },
       error: (e) => console.error(e)
     });
+  }
+
+  protected get orderFormControl() {
+    return this.orderForm.controls;
   }
 
 }

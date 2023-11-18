@@ -19,18 +19,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderCreateComponent } from './order/order-create/order-create.component';
+import { OrderDetailComponent } from './order/order-detail/order-detail.component';
+import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
     OrderListComponent,
-    OrderListComponent,
-    ProductListComponent,
+    OrderDetailComponent,
+    OrderCreateComponent,
+    OrderUpdateComponent,
     HeaderComponent,
     HomeComponent,
     ContactComponent,
     TechnicalSupportComponent,
+    ProductListComponent,
     ProductDetailComponent,
     ProductCreateComponent,
     ProductUpdateComponent,
