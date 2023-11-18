@@ -81,5 +81,3 @@ export class ProductCreateComponent {
     this.registerForm.reset();
   }
 }
-
-

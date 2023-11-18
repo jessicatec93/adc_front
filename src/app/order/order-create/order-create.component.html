@@ -1,7 +1,139 @@
 <br><br>
-<h1><b>Crear nueva orden</b></h1>
+<h1><b>Crear nueva Orden</b></h1>
 <br><br>
 <form
-  [formGroup]="orderForm"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  class="row g-3"
 >
+  <div class="col-md-6">
+    <label for="Description" class="form-label">Descripción</label>
+    <input type="text" class="form-control" formControlName="description" />
+  </div>
+  <div class="col-md-6">
+    <label for="Delivery_at" class="form-label">Fecha de atención</label>
+    <input type="date" min="{{minDate}}" class="form-control" formControlName="delivery_at" />
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['expiration_at'].touched || submitted) &&
+          registerFormControl['expiration_at'].errors?.['required']"
+    >
+    Fecha de atención es requerido
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Price_per_unit" class="form-label">Precio por unidad*</label>
+    <input type="number" class="form-control" formControlName="price_per_unit" />
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['price_per_unit'].touched || submitted) &&
+          registerFormControl['price_per_unit'].errors?.['required']"
+    >
+      Precio por unidad es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['price_per_unit'].touched || submitted) &&
+          registerFormControl['price_per_unit'].errors?.['min']"
+    >
+      Precio por unidad debe ser mayor a 0
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Required_quantity" class="form-label">Cantidad requerida*</label>
+    <input type="number" class="form-control" formControlName="required_quantity" />
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['required']"
+    >
+      Cantidad requerida es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['min']"
+    >
+      Cantidad requerida debe ser mayor a 0
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Total_price" class="form-label">Precio total*</label>
+    <input type="number" class="form-control" formControlName="total_price" />
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['required']"
+    >
+      Total de precio es requerido
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['min_amount'].touched || submitted) &&
+          registerFormControl['min_amount'].errors?.['min']"
+    >
+      Total de precio debe ser mayor a 0
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Status_id" class="form-label">Estatus*</label>
+    <select name="StatusId" class="form-select" formControlName="status_id">
+      <option [value]="status?.id" *ngFor="let status of statuses">{{status?.name}}</option>
+    </select>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['classification_id'].touched || submitted) &&
+          registerFormControl['classification_id'].errors?.['required']"
+    >
+      Estatus es requerido
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="product_id" class="form-label">Producto*</label>
+    <select name="ProductId" class="form-select" formControlName="product_id">
+      <option [value]="status?.id" *ngFor="let status of statuses">{{status?.name}}</option>
+    </select>
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['classification_id'].touched || submitted) &&
+          registerFormControl['classification_id'].errors?.['required']"
+    >
+      Producto es requerido
+    </span>
+  </div>
+  <div class="col-md-6">
+    <label for="Deadline_at" class="form-label">Fecha de atención limite*</label>
+    <input type="date" min="{{minDate}}" class="form-control" formControlName="deadline_at" />
+    <span
+      class="text-danger"
+      *ngIf="
+          (registerFormControl['expiration_at'].touched || submitted) &&
+          registerFormControl['expiration_at'].errors?.['required']"
+    >
+    Fecha de inicio de limite es requerido
+    </span>
+  </div>
+  <div align="right">
+    <button type="submit" class="btn btn-success">Registrar</button>
+    <button
+      type="reset"
+      class="btn btn-secondary ms-2"
+      (click)="resetForm()"
+    >
+      Limpiar
+    </button>
+    &nbsp;
+    <a class="btn btn-danger" href="/product-list" role="button">Cancelar</a>
+  </div>
 </form>
+<br><br><br>
