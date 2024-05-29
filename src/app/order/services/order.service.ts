@@ -11,7 +11,7 @@ import { OrderCreate } from '../order-create/schemas/order-create';
   providedIn: 'root',
 })
 export class OrderService {
-  private url:string = 'http://127.0.0.1:8000/api/orders';
+  private url:string = 'https://adc-back.onrender.com/api/orders';
   
   constructor(private http: HttpClient) {
   }

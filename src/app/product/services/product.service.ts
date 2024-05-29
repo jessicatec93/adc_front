@@ -12,7 +12,7 @@ import { ProductResumResponse } from './productResumResponse';
   providedIn: 'root',
 })
 export class ProductService {
-  private url:string = 'http://127.0.0.1:8000/api/products';
+  private url:string = 'https://adc-back.onrender.com/api/products';
   
   constructor(private http: HttpClient) {
   }

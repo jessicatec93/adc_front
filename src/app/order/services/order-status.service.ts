@@ -8,7 +8,7 @@ import { OrderStatusResponse } from '../schemas/order-status-response';
   providedIn: 'root',
 })
 export class OrderStatusService {
-  private url:string = 'http://127.0.0.1:8000/api/order-statuses';
+  private url:string = 'https://adc-back.onrender.com/api/order-statuses';
   
   constructor(private http: HttpClient) {
   }
